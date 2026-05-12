@@ -449,7 +449,7 @@ section{
 
 <nav class="navbar">
     <div class="logo">SOHAL <span>ELECTRICAL</span></div>
-
+    <br><br>
     <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -463,7 +463,7 @@ section{
 
 <section class="hero" id="home">
     <div class="hero-content">
-        <br><br>
+        <br><br><br><br><br><br>
         <h1>
             Professional <span>Electrical</span><br>
             Services in Punjab
@@ -475,7 +475,7 @@ section{
 
         <div class="hero-btns">
             <a href="#contact" class="btn primary-btn">Get Free Quote</a>
-            <a href="https://wa.me/919878961469" target="_blank" class="btn secondary-btn">Emergency WhatsApp Support</a>
+            <a href="https://wa.me/919888519564" target="_blank" class="btn secondary-btn">Emergency WhatsApp Support</a>
         </div>
 
         <div class="stats">
@@ -512,7 +512,7 @@ section{
     <div class="about-grid">
 
         <div class="about-image">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2C2FKUI55MibUKehqBAn-Zk2oNIYD9O5rhg&s">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnvWUV3JyML65YD_jX_XYsDY8B0clcmWu-Aw&s">
         </div>
 
         <div class="about-content">
@@ -596,7 +596,85 @@ section{
     </div>
 
 </section>
+<!-- Reviews Section -->
+<section id="reviews" class="content">
 
+    <h2 style="
+    font-size:2.5rem;
+    margin-bottom:15px;
+    ">
+    Customer Reviews
+    </h2>
+
+    <p style="
+    color:#777;
+    margin-bottom:40px;
+    ">
+    What our customers say about our electrical products and service.
+    </p>
+
+    <div
+    id="reviewContainer"
+    style="
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+    margin-bottom:50px;
+    ">
+    </div>
+
+    <div style="
+    max-width:600px;
+    margin:auto;
+    background:var(--card-bg);
+    padding:30px;
+    border-radius:20px;
+    ">
+
+        <input
+        type="text"
+        id="reviewName"
+        placeholder="Your Name"
+        style="
+        width:100%;
+        padding:15px;
+        margin-bottom:20px;
+        border:none;
+        border-radius:10px;
+        "
+        >
+
+        <textarea
+        id="reviewText"
+        placeholder="Write your review..."
+        rows="4"
+        style="
+        width:100%;
+        padding:15px;
+        border:none;
+        border-radius:10px;
+        margin-bottom:20px;
+        "
+        ></textarea>
+
+        <button
+        onclick="addReview()"
+        style="
+        width:100%;
+        padding:15px;
+        border:none;
+        border-radius:10px;
+        background:#ffcc00;
+        font-weight:bold;
+        cursor:pointer;
+        ">
+        Submit Review
+        </button>
+
+    </div>
+
+</section>
 <section id="gallery">
 
     <div class="section-title">
@@ -685,11 +763,13 @@ images
             Bassi Pathana, Punjab</p>
 
             <p><strong>📞 Phone:</strong><br>
-            +91 98789 61469</p>
+            +91 98885 19564  +91 98887 19564</p>
 
             <p><strong>🕒 Working Hours:</strong><br>
             Monday - Saturday<br>
-            8:00 AM - 8:00 PM</p>
+            8:00 AM - 8:00 PM<br>
+            Sunday <br>
+            8:00 AM - 4:00 PM</p>
 
             <p><strong>⚡ Fast Product Availability & Customer Support</strong></p>
 
@@ -745,7 +825,7 @@ images
     </p>
 </footer>
 
-<a href="https://wa.me/919878961469" class="whatsapp" target="_blank">
+<a href="https://wa.me/919888519564" class="whatsapp" target="_blank">
 💬
 </a>
 
@@ -905,6 +985,97 @@ form.addEventListener('submit', function(e){
 });
 
 </script>
+<script>
 
+loadReviews();
+
+function addReview(){
+
+    const name =
+    document.getElementById('reviewName').value;
+
+    const text =
+    document.getElementById('reviewText').value;
+
+    if(!name || !text){
+
+        alert('Fill all fields');
+        return;
+
+    }
+
+    let reviews =
+    JSON.parse(localStorage.getItem('reviews'))
+    || [];
+
+    reviews.push({
+        name:name,
+        text:text
+    });
+
+    localStorage.setItem(
+        'reviews',
+        JSON.stringify(reviews)
+    );
+
+    document.getElementById('reviewName').value = '';
+    document.getElementById('reviewText').value = '';
+
+    loadReviews();
+
+}
+
+function loadReviews(){
+
+    const container =
+    document.getElementById('reviewContainer');
+
+    container.innerHTML = '';
+
+    let reviews =
+    JSON.parse(localStorage.getItem('reviews'))
+    || [];
+
+    reviews
+    .slice()
+    .reverse()
+    .forEach(review=>{
+
+        const card =
+        document.createElement('div');
+
+        card.style.background =
+        'var(--card-bg)';
+
+        card.style.padding = '25px';
+
+        card.style.borderRadius = '18px';
+
+        card.innerHTML = `
+
+        <h3 style="
+        color:#ffcc00;
+        margin-bottom:15px;
+        ">
+        ${review.name}
+        </h3>
+
+        <p style="
+        color:#ccc;
+        line-height:1.7;
+        margin:0;
+        ">
+        ${review.text}
+        </p>
+
+        `;
+
+        container.appendChild(card);
+
+    });
+
+}
+
+</script>
 </body>
 </html>
