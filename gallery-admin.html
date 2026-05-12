@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gallery Admin Panel | Sohal Electrical Works</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#0d0d0d;
+    color:white;
+    padding:40px 8%;
+}
+
+.admin-box{
+    max-width:900px;
+    margin:auto;
+    background:#1b1b1b;
+    padding:40px;
+    border-radius:20px;
+}
+
+h1{
+    text-align:center;
+    color:#ffcc00;
+    margin-bottom:20px;
+    font-size:2.5rem;
+}
+
+p{
+    text-align:center;
+    color:#bbb;
+    margin-bottom:25px;
+    line-height:1.8;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    margin-top:20px;
+    background:#ffcc00;
+    color:#000;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+}
+
+#uploadSection{
+    display:none;
+    margin-top:40px;
+}
+
+.instructions{
+    margin-top:30px;
+    background:#111;
+    padding:20px;
+    border-radius:15px;
+    line-height:1.8;
+    color:#bbb;
+}
+
+.gallery-grid{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.gallery-card{
+    position:relative;
+}
+
+.gallery-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+.delete-btn{
+    position:absolute;
+    bottom:10px;
+    left:10px;
+    background:red;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    width:auto;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-bottom:30px;
+    background:#ffcc00;
+    color:#000;
+    text-decoration:none;
+    padding:14px 25px;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+@media(max-width:768px){
+
+    body{
+        padding:20px;
+    }
+
+    .admin-box{
+        padding:25px;
+    }
+
+}
+
+</style>
+
+</head>
+<body>
+
+<a href="index.html" class="back-btn">
+← Back To Website
+</a>
+
+<div class="admin-box">
+
+<h1>Gallery Admin Panel</h1>
+
+<p>
+Only authorized users can upload or delete gallery photos.
+</p>
+
+<input
+type="password"
+id="password"
+placeholder="Enter Admin Password"
+>
+
+<button onclick="checkPassword()">
+Unlock Admin Panel
+</button>
+
+<div id="uploadSection">
+
+<input
+type="file"
+id="imageUpload"
+accept="image/*"
+multiple
+>
+
+<button onclick="uploadImages()">
+Upload Photos
+</button>
+
+<div class="instructions">
+
+<b>IMPORTANT:</b>
+
+<br><br>
+
+After selecting photos:
+
+<br><br>
+
+1. Copy the same photos into your:
+
+<br><br>
+
+<b>images/</b> folder
+
+<br><br>
+
+Example:
+
+<br>
+
+images/photo1.jpg
+
+<br><br>
+
+2. Uploaded photos automatically:
+<ul style="margin-top:10px; padding-left:20px;">
+<li>Appear on homepage</li>
+<li>Appear in full gallery page</li>
+<li>Stay after refresh</li>
+</ul>
+
+</div>
+
+<div
+class="gallery-grid"
+id="adminGallery"
+>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const adminPassword = "sohal123";
+
+let accessGranted = false;
+
+function checkPassword(){
+
+    const enteredPassword =
+    document.getElementById('password').value;
+
+    if(enteredPassword === adminPassword){
+
+        accessGranted = true;
+
+        document.getElementById('uploadSection')
+        .style.display = 'block';
+
+        loadAdminGallery();
+
+        alert('Access Granted');
+
+    }else{
+
+        alert('Wrong Password');
+
+    }
+
+}
+
+function uploadImages(){
+
+    if(!accessGranted) return;
+
+    const input =
+    document.getElementById('imageUpload');
+
+    const files =
+    input.files;
+
+    if(!files.length){
+
+        alert('Select images first');
+        return;
+
+    }
+
+    let images =
+    JSON.parse(localStorage.getItem('galleryImages'))
+    || [];
+
+    Array.from(files).forEach(file=>{
+
+        const imagePath =
+        'images/' + file.name;
+
+        images.push(imagePath);
+
+    });
+
+    localStorage.setItem(
+        'galleryImages',
+        JSON.stringify(images)
+    );
+
+    loadAdminGallery();
+
+    alert(
+    'Photos Added Successfully!\n\nNow copy same photos into images folder.'
+    );
+
+}
+
+function loadAdminGallery(){
+
+    const gallery =
+    document.getElementById('adminGallery');
+
+    gallery.innerHTML = '';
+
+    let images =
+    JSON.parse(localStorage.getItem('galleryImages'))
+    || [];
+
+    images
+    .slice()
+    .reverse()
+    .forEach((src,index)=>{
+
+        const card =
+        document.createElement('div');
+
+        card.classList.add('gallery-card');
+
+        const img =
+        document.createElement('img');
+
+        img.src = src;
+
+        const deleteBtn =
+        document.createElement('button');
+
+        deleteBtn.innerHTML = 'Delete';
+
+        deleteBtn.classList.add('delete-btn');
+
+        deleteBtn.onclick = function(){
+
+            const realIndex =
+            images.length - 1 - index;
+
+            images.splice(realIndex,1);
+
+            localStorage.setItem(
+                'galleryImages',
+                JSON.stringify(images)
+            );
+
+            loadAdminGallery();
+
+        };
+
+        card.appendChild(img);
+
+        card.appendChild(deleteBtn);
+
+        gallery.appendChild(card);
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>

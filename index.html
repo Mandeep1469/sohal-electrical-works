@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sohal Electrical Works | Trusted Electricians in Punjab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+:root{
+    --primary:#ffcc00;
+    --dark:#0d0d0d;
+    --light:#ffffff;
+    --gray:#888;
+    --card:#1b1b1b;
+}
+
+body{
+    background:#fff;
+    color:#111;
+    overflow-x:hidden;
+}
+
+.dark-mode{
+    background:#0d0d0d;
+    color:#fff;
+}
+
+.dark-mode section,
+.dark-mode .about,
+.dark-mode .contact,
+.dark-mode .reviews{
+    background:#111;
+    color:#fff;
+}
+
+.navbar{
+    position:fixed;
+    top:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 8%;
+    background:rgba(0,0,0,0.9);
+    z-index:1000;
+    backdrop-filter:blur(10px);
+}
+
+.logo{
+    color:#fff;
+    font-size:1.5rem;
+    font-weight:800;
+}
+
+.logo span{
+    color:var(--primary);
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:25px;
+    align-items:center;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#fff;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:var(--primary);
+}
+
+.mode-btn{
+    background:var(--primary);
+    border:none;
+    padding:10px 16px;
+    border-radius:30px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:0 8%;
+    background:
+    linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),
+    url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=1600&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center;
+    color:#fff;
+}
+
+.hero-content{
+    max-width:750px;
+}
+
+.hero h1{
+    font-size:clamp(3rem,8vw,5.5rem);
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:var(--primary);
+}
+
+.hero p{
+    font-size:1.1rem;
+    line-height:1.8;
+    color:#ddd;
+    margin-bottom:35px;
+}
+
+.hero-btns{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.btn{
+    padding:16px 32px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:700;
+    transition:0.3s;
+}
+
+.primary-btn{
+    background:var(--primary);
+    color:#000;
+}
+
+.primary-btn:hover{
+    transform:translateY(-5px);
+}
+
+.secondary-btn{
+    border:2px solid #fff;
+    color:#fff;
+}
+
+.secondary-btn:hover{
+    background:#fff;
+    color:#000;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:25px;
+    margin-top:60px;
+}
+
+.stat-box{
+    background:rgba(255,255,255,0.08);
+    padding:25px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+.stat-box h2{
+    color:var(--primary);
+    font-size:2.5rem;
+}
+
+section{
+    padding:110px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    color:var(--gray);
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:50px;
+    align-items:center;
+}
+
+.about-image img{
+    width:100%;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.3);
+}
+
+.about-content h3{
+    font-size:2rem;
+    margin-bottom:20px;
+}
+
+.about-content p{
+    line-height:1.9;
+    margin-bottom:20px;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin-top:30px;
+}
+
+.feature-box{
+    background:#151515;
+    color:#fff;
+    padding:25px;
+    border-radius:15px;
+}
+
+.services{
+    background:#0d0d0d;
+    color:#fff;
+}
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.service-card{
+    background:#1b1b1b;
+    padding:40px;
+    border-radius:20px;
+    transition:0.4s;
+    border:1px solid rgba(255,204,0,0.15);
+}
+
+.service-card:hover{
+    transform:translateY(-12px);
+    border-color:var(--primary);
+}
+
+.service-icon{
+    font-size:4rem;
+    margin-bottom:20px;
+}
+
+.service-card h3{
+    color:var(--primary);
+    margin-bottom:15px;
+}
+
+.service-card p{
+    line-height:1.8;
+    color:#ccc;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.gallery-grid img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    border-radius:15px;
+    transition:0.4s;
+}
+
+.gallery-grid img:hover{
+    transform:scale(1.03);
+}
+
+.reviews{
+    background:#f8f8f8;
+}
+
+.review-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.review-card{
+    background:#fff;
+    padding:35px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.dark-mode .review-card{
+    background:#1a1a1a;
+}
+
+.review-card h4{
+    margin-top:20px;
+    color:var(--primary);
+}
+
+.contact-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:50px;
+}
+
+.contact-info{
+    background:#111;
+    color:#fff;
+    padding:40px;
+    border-radius:20px;
+}
+
+.contact-info h3{
+    margin-bottom:25px;
+    color:var(--primary);
+}
+
+.contact-info p{
+    margin-bottom:18px;
+    line-height:1.8;
+}
+
+.contact-form{
+    background:#fff;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.dark-mode .contact-form{
+    background:#1b1b1b;
+}
+
+.input-box{
+    margin-bottom:20px;
+}
+
+.input-box input,
+.input-box textarea,
+.input-box select{
+    width:100%;
+    padding:16px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    background:transparent;
+    color:inherit;
+}
+
+.submit-btn{
+    width:100%;
+    padding:16px;
+    border:none;
+    background:var(--primary);
+    border-radius:10px;
+    font-weight:700;
+    cursor:pointer;
+    font-size:1rem;
+}
+
+.map iframe{
+    width:100%;
+    border:none;
+    border-radius:20px;
+    margin-top:50px;
+}
+
+.footer{
+    background:#000;
+    color:#999;
+    padding:40px 8%;
+    text-align:center;
+}
+
+.whatsapp{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:#25d366;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    font-size:2rem;
+    color:#fff;
+    z-index:1000;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+@media(max-width:768px){
+
+.navbar{
+    flex-direction:column;
+    gap:15px;
+}
+
+.nav-links{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+}
+
+.hero{
+    text-align:center;
+    padding-top:120px;
+}
+
+.hero-btns{
+    justify-content:center;
+}
+
+.section-title h2{
+    font-size:2.2rem;
+}
+
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">SOHAL <span>ELECTRICAL</span></div>
+
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button class="mode-btn" onclick="toggleMode()">Mode</button></li>
+    </ul>
+</nav>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <br><br>
+        <h1>
+            Professional <span>Electrical</span><br>
+            Services in Punjab
+        </h1>
+
+        <p>
+            Sohal Electrical Works has been delivering trusted residential, commercial, and industrial electrical solutions since 2008. Serving Bassi Pathana, Fatehgarh Sahib, Sirhind, Morinda, and nearby areas with safety, precision, and honest workmanship.
+        </p>
+
+        <div class="hero-btns">
+            <a href="#contact" class="btn primary-btn">Get Free Quote</a>
+            <a href="https://wa.me/919878961469" target="_blank" class="btn secondary-btn">Emergency WhatsApp Support</a>
+        </div>
+
+        <div class="stats">
+
+            <div class="stat-box">
+                <h2>15+</h2>
+                <p>Years Experience</p>
+            </div>
+
+            <div class="stat-box">
+                <h2>Best</h2>
+                <p>Prices</p>
+            </div>
+
+            <div class="stat-box">
+                <h2>Special</h2>
+                <p>Discounts</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="about" id="about">
+
+    <div class="section-title">
+        <h2>About Sohal Electrical Works</h2>
+        <p>
+            A trusted local electrical business built on quality service, honest pricing, and long-term customer relationships.
+        </p>
+    </div>
+
+    <div class="about-grid">
+
+        <div class="about-image">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2C2FKUI55MibUKehqBAn-Zk2oNIYD9O5rhg&s">
+        </div>
+
+        <div class="about-content">
+
+            <h3>Powering Homes & Industries Since 2008</h3>
+
+            <p>
+                Founded near Truck Union, Sirhind-Morinda Road, Sohal Electrical Works started as a trusted local electrical supply store and has grown into a reliable name across Punjab for quality electrical products and honest customer service.
+            </p>
+
+            <p>
+                We specialize in supplying electrical fittings, industrial materials, switches, pipes, wires, lighting products, junction boxes, and heavy-duty electrical accessories for homes, shops, factories, and contractors.
+            </p>
+
+            <div class="features">
+
+                <div class="feature-box">
+                    ✔ Trusted Electrical Suppliers
+                </div>
+
+                <div class="feature-box">
+                    ✔ Affordable Pricing
+                </div>
+
+                <div class="feature-box">
+                    ✔ Quality Electrical Products
+                </div>
+
+                <div class="feature-box">
+                    ✔ Industrial Expertise
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="services" id="services">
+
+    <div class="section-title">
+        <h2>Our Products & Services</h2>
+        <p>
+            Supplying trusted electrical materials, industrial components, and quality electrical products for homes, shops, factories, and commercial projects.
+        </p>
+    </div>
+
+    <div style="background:rgba(255,204,0,0.12); border:1px solid rgba(255,204,0,0.3); padding:20px; border-radius:16px; margin-bottom:45px; text-align:center; max-width:950px; margin-inline:auto; color:#fff; line-height:1.8;">
+        <strong style="color:var(--primary); font-size:1.1rem;">Important Note:</strong><br>
+        Sohal Electrical Works mainly supplies and sells electrical products, fittings, accessories, industrial materials, pipes, switches, junction boxes, and related electrical goods. We currently do not provide on-site electrical labor or installation work.
+    </div>
+
+    <div class="services-grid">
+
+        <div class="service-card">
+            <div class="service-icon">🧰</div>
+            <h3>Wiring & Installation Materials</h3>
+            <p>
+                Complete stock of wiring products, PVC pipes, insulation tapes, clamps, cable trays, and electrical setup materials for contractors and electricians.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">💡</div>
+            <h3>Lighting Products</h3>
+            <p>
+                LED bulbs, decorative lights, flood lights, outdoor lighting products, holders, drivers, and energy-efficient lighting solutions.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🛒</div>
+            <h3>Bulk Supply & Contractor Support</h3>
+            <p>
+                Wholesale pricing and bulk supply support for contractors, factories, shops, builders, and commercial construction projects.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="gallery">
+
+    <div class="section-title">
+        <h2>Our Gallery</h2>
+        <p>
+            Latest uploaded electrical product and supply photos.
+        </p>
+    </div>
+
+    <div style="
+        display:flex;
+        justify-content:center;
+        gap:20px;
+        flex-wrap:wrap;
+        margin-bottom:40px;
+    ">
+
+        <a
+            href="gallery.html"
+            target="_blank"
+            class="btn primary-btn"
+        >
+            See More Photos
+        </a>
+
+        <a
+            href="gallery-admin.html"
+            target="_blank"
+            class="btn secondary-btn"
+        >
+            Admin Upload
+        </a>
+
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+
+    </div>
+
+</section>
+
+<script>
+
+const galleryGrid =
+document.getElementById('galleryGrid');
+
+let images =
+JSON.parse(localStorage.getItem('galleryImages'))
+|| [];
+
+images
+.slice(-4)
+.reverse()
+.forEach(src=>{
+
+    const img =
+    document.createElement('img');
+
+    img.src = src;
+
+    galleryGrid.appendChild(img);
+
+});
+
+</script>
+
+<section class="reviews" id="reviews">
+
+    <section class="contact" id="contact">
+
+    <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>
+            Need electrical products or materials? Contact us today for pricing, availability, and bulk orders.
+        </p>
+    </div>
+
+    <div class="contact-container">
+
+        <div class="contact-info">
+
+            <h3>Business Information</h3>
+
+            <p><strong>📍 Address:</strong><br>
+            Near Truck Union, Sirhind-Morinda Road,<br>
+            Bassi Pathana, Punjab</p>
+
+            <p><strong>📞 Phone:</strong><br>
+            +91 98789 61469</p>
+
+            <p><strong>🕒 Working Hours:</strong><br>
+            Monday - Saturday<br>
+            8:00 AM - 8:00 PM</p>
+
+            <p><strong>⚡ Fast Product Availability & Customer Support</strong></p>
+
+        </div>
+
+        <div class="contact-form">
+
+            <form id="contactForm">
+
+                <div class="input-box">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+
+                <div class="input-box">
+                    <input type="tel" placeholder="Phone Number" required>
+                </div>
+
+                <div class="input-box">
+                    <select>
+                        <option>Residential Wiring</option>
+                        <option>Industrial Maintenance</option>
+                        <option>Emergency Repair</option>
+                        <option>Lighting Installation</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <textarea rows="5" placeholder="Your Message"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Send Request
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="map">
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1715.4866131326578!2d76.40867412843136!3d30.69102938629203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39101d029ff9ada7%3A0xc24b0f7e49e5db2b!2sSohal%20Electric%20workas!5e0!3m2!1sen!2sin!4v1776491752118!5m2!1sen!2sin" width="100%" height="450" allowfullscreen="" loading="lazy"></iframe>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+    <p>
+        © 2026 Sohal Electrical Works | Built with dedication and trust in Punjab.
+    </p>
+</footer>
+
+<a href="https://wa.me/919878961469" class="whatsapp" target="_blank">
+💬
+</a>
+
+<script>
+
+const galleryPassword = 'sohal123';
+
+function unlockGallery(){
+
+    const enteredPassword = document.getElementById('galleryPassword').value;
+
+    if(enteredPassword === galleryPassword){
+
+        document.getElementById('uploadSection').style.display = 'block';
+
+        alert('Gallery Upload Unlocked');
+
+    }
+    else{
+
+        alert('Incorrect Password');
+
+    }
+
+}
+
+function saveGalleryImages(){
+
+    const input = document.getElementById('galleryUpload');
+    const files = input.files;
+
+    if(!files.length){
+        alert('Please select images first');
+        return;
+    }
+
+    let savedImages = JSON.parse(localStorage.getItem('galleryImages')) || [];
+
+    Array.from(files).forEach(file => {
+
+        const reader = new FileReader();
+
+        reader.onload = function(e){
+
+            savedImages.push(e.target.result);
+
+            localStorage.setItem('galleryImages', JSON.stringify(savedImages));
+
+            addGalleryImage(e.target.result);
+
+        }
+
+        reader.readAsDataURL(file);
+
+    });
+
+    alert('Images Uploaded Successfully');
+
+}
+
+function addGalleryImage(src){
+
+    const galleryGrid = document.getElementById('galleryGrid');
+
+    if(galleryGrid.children.length >= 4){
+        return;
+    }
+
+    const img = document.createElement('img');
+
+    img.src = src;
+
+    galleryGrid.prepend(img);
+
+}
+
+function loadGalleryImages(){
+
+    let savedImages =
+    JSON.parse(localStorage.getItem('galleryImages'))
+    || [];
+
+    savedImages
+    .slice(-4)
+    .reverse()
+    .forEach(image => {
+
+        addGalleryImage(image);
+
+    });
+
+}
+
+loadGalleryImages();
+
+function toggleMode(){
+    document.body.classList.toggle('dark-mode');
+}
+
+const form = document.getElementById('contactForm');
+
+const reviewForm = document.getElementById('reviewForm');
+const reviewsContainer = document.getElementById('reviewsContainer');
+
+loadReviews();
+
+reviewForm.addEventListener('submit', function(e){
+
+    e.preventDefault();
+
+    const name = document.getElementById('reviewName').value;
+    const text = document.getElementById('reviewText').value;
+
+    const review = {
+        name,
+        text
+    };
+
+    let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
+    reviews.push(review);
+
+    localStorage.setItem('reviews', JSON.stringify(reviews));
+
+    showReview(review);
+
+    reviewForm.reset();
+
+});
+
+function showReview(review){
+
+    const div = document.createElement('div');
+
+    div.classList.add('review-card');
+
+    div.innerHTML = `
+        <p>“${review.text}”</p>
+        <h4>— ${review.name}</h4>
+    `;
+
+    reviewsContainer.prepend(div);
+
+}
+
+function loadReviews(){
+
+    let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
+    reviews.forEach(showReview);
+
+}
+
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+    alert('Thank you! Your request has been received. Sohal Electrical Works will contact you soon.');
+});
+
+</script>
+
+</body>
+</html>
