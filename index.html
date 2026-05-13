@@ -1,3 +1,6 @@
+# Premium Sohal Electrical Works Website (Single File)
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -135,6 +138,25 @@ body{
     display:flex;
     flex-wrap:wrap;
     gap:15px;
+}
+
+.hidden-admin{
+    text-align:right;
+    margin-bottom:15px;
+}
+
+.hidden-admin button{
+    opacity:0;
+    background:transparent;
+    border:none;
+    color:transparent;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.hidden-admin button:hover{
+    opacity:1;
+    color:var(--primary);
 }
 
 .btn{
@@ -449,7 +471,7 @@ section{
 
 <nav class="navbar">
     <div class="logo">SOHAL <span>ELECTRICAL</span></div>
-    <br><br>
+
     <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -463,10 +485,10 @@ section{
 
 <section class="hero" id="home">
     <div class="hero-content">
-        <br><br><br><br><br><br>
+        <br><br>
         <h1>
             Professional <span>Electrical</span><br>
-            Services in Punjab
+            Services in Area
         </h1>
 
         <p>
@@ -491,8 +513,8 @@ section{
             </div>
 
             <div class="stat-box">
-                <h2>Special</h2>
-                <p>Discounts</p>
+                <h2>GST</h2>
+                <p>Verified</p>
             </div>
 
         </div>
@@ -512,7 +534,7 @@ section{
     <div class="about-grid">
 
         <div class="about-image">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnvWUV3JyML65YD_jX_XYsDY8B0clcmWu-Aw&s">
+            <img src="https://www.nchasia.com/en-in/wp-content/resources/sites/9/2025/06/electrical-maintenance.png" alt="Electrical Appliances" style="width:100%; max-width:550px; height:420px; object-fit:cover; border-radius:20px;">
         </div>
 
         <div class="about-content">
@@ -520,7 +542,7 @@ section{
             <h3>Powering Homes & Industries Since 2008</h3>
 
             <p>
-                Founded near Truck Union, Sirhind-Morinda Road, Sohal Electrical Works started as a trusted local electrical supply store and has grown into a reliable name across Punjab for quality electrical products and honest customer service.
+                Founded near Truck Union, Sirhind-Morinda Road, Sohal Electrical Works started as a trusted local electrical supply store and has grown into a reliable name across our Area for quality electrical products and honest customer service.
             </p>
 
             <p>
@@ -596,91 +618,12 @@ section{
     </div>
 
 </section>
-<!-- Reviews Section -->
-<section id="reviews" class="content">
-
-    <h2 style="
-    font-size:2.5rem;
-    margin-bottom:15px;
-    ">
-    Customer Reviews
-    </h2>
-
-    <p style="
-    color:#777;
-    margin-bottom:40px;
-    ">
-    What our customers say about our electrical products and service.
-    </p>
-
-    <div
-    id="reviewContainer"
-    style="
-    display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
-    margin-bottom:50px;
-    ">
-    </div>
-
-    <div style="
-    max-width:600px;
-    margin:auto;
-    background:var(--card-bg);
-    padding:30px;
-    border-radius:20px;
-    ">
-
-        <input
-        type="text"
-        id="reviewName"
-        placeholder="Your Name"
-        style="
-        width:100%;
-        padding:15px;
-        margin-bottom:20px;
-        border:none;
-        border-radius:10px;
-        "
-        >
-
-        <textarea
-        id="reviewText"
-        placeholder="Write your review..."
-        rows="4"
-        style="
-        width:100%;
-        padding:15px;
-        border:none;
-        border-radius:10px;
-        margin-bottom:20px;
-        "
-        ></textarea>
-
-        <button
-        onclick="addReview()"
-        style="
-        width:100%;
-        padding:15px;
-        border:none;
-        border-radius:10px;
-        background:#ffcc00;
-        font-weight:bold;
-        cursor:pointer;
-        ">
-        Submit Review
-        </button>
-
-    </div>
-
-</section>
 <section id="gallery">
 
     <div class="section-title">
         <h2>Our Gallery</h2>
         <p>
-            Latest uploaded electrical product and supply photos.
+            Here are some of the photos of our products.
         </p>
     </div>
 
@@ -705,7 +648,7 @@ section{
             target="_blank"
             class="btn secondary-btn"
         >
-            Admin Upload
+            Add Photos
         </a>
 
     </div>
@@ -763,13 +706,16 @@ images
             Bassi Pathana, Punjab</p>
 
             <p><strong>📞 Phone:</strong><br>
-            +91 98885 19564  +91 98887 19564</p>
+            +91 98885 19564<br>
+            +91 98887 19564
+        </p>
 
             <p><strong>🕒 Working Hours:</strong><br>
             Monday - Saturday<br>
             8:00 AM - 8:00 PM<br>
-            Sunday <br>
-            8:00 AM - 4:00 PM</p>
+            Sunday<br>
+            8:00 AM - 4:00 PM
+            </p>
 
             <p><strong>⚡ Fast Product Availability & Customer Support</strong></p>
 
@@ -821,7 +767,7 @@ images
 
 <footer class="footer">
     <p>
-        © 2026 Sohal Electrical Works | Built with dedication and trust in Punjab.
+        © 2026 Sohal Electrical Works | Built with dedication and trust in Punjab. | This website is developed and organized by Mandeep Singh
     </p>
 </footer>
 
@@ -836,7 +782,7 @@ const galleryPassword = 'sohal123';
 function unlockGallery(){
 
     const enteredPassword = document.getElementById('galleryPassword').value;
-
+    document.getElementById('galleryAdminPanel').style.display = 'block';
     if(enteredPassword === galleryPassword){
 
         document.getElementById('uploadSection').style.display = 'block';
@@ -870,8 +816,7 @@ function saveGalleryImages(){
 
         reader.onload = function(e){
 
-            savedImages.push(e.target.result);
-
+            savedImages.unshift(e.target.result);
             localStorage.setItem('galleryImages', JSON.stringify(savedImages));
 
             addGalleryImage(e.target.result);
@@ -908,12 +853,24 @@ function loadGalleryImages(){
     JSON.parse(localStorage.getItem('galleryImages'))
     || [];
 
+    // clear old images first
+    const galleryGrid =
+    document.getElementById('galleryGrid');
+
+    galleryGrid.innerHTML = '';
+
+    // show latest uploaded images first
     savedImages
     .slice(-4)
     .reverse()
     .forEach(image => {
 
-        addGalleryImage(image);
+        const img =
+        document.createElement('img');
+
+        img.src = image;
+
+        galleryGrid.appendChild(img);
 
     });
 
@@ -985,97 +942,6 @@ form.addEventListener('submit', function(e){
 });
 
 </script>
-<script>
 
-loadReviews();
-
-function addReview(){
-
-    const name =
-    document.getElementById('reviewName').value;
-
-    const text =
-    document.getElementById('reviewText').value;
-
-    if(!name || !text){
-
-        alert('Fill all fields');
-        return;
-
-    }
-
-    let reviews =
-    JSON.parse(localStorage.getItem('reviews'))
-    || [];
-
-    reviews.push({
-        name:name,
-        text:text
-    });
-
-    localStorage.setItem(
-        'reviews',
-        JSON.stringify(reviews)
-    );
-
-    document.getElementById('reviewName').value = '';
-    document.getElementById('reviewText').value = '';
-
-    loadReviews();
-
-}
-
-function loadReviews(){
-
-    const container =
-    document.getElementById('reviewContainer');
-
-    container.innerHTML = '';
-
-    let reviews =
-    JSON.parse(localStorage.getItem('reviews'))
-    || [];
-
-    reviews
-    .slice()
-    .reverse()
-    .forEach(review=>{
-
-        const card =
-        document.createElement('div');
-
-        card.style.background =
-        'var(--card-bg)';
-
-        card.style.padding = '25px';
-
-        card.style.borderRadius = '18px';
-
-        card.innerHTML = `
-
-        <h3 style="
-        color:#ffcc00;
-        margin-bottom:15px;
-        ">
-        ${review.name}
-        </h3>
-
-        <p style="
-        color:#ccc;
-        line-height:1.7;
-        margin:0;
-        ">
-        ${review.text}
-        </p>
-
-        `;
-
-        container.appendChild(card);
-
-    });
-
-}
-
-</script>
 </body>
 </html>
